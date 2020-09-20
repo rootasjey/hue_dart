@@ -31,4 +31,11 @@ abstract class SensorConfig
   Map toBridgeObject({String action}) {
     return serializers.serializeWith(SensorConfig.serializer, this);
   }
+
+  Map toUpdateObject({String action}) {
+    Map serialized = serializers.serializeWith(SensorConfig.serializer, this);
+    serialized.remove('battery');
+    serialized.remove('reachable');
+    return serialized;
+  }
 }

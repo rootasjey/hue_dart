@@ -112,13 +112,13 @@ class _$SceneSerializer implements StructuredSerializer<Scene> {
           result.lightIds.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'sceneLights':
           result.sceneLights.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Light)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'owner':
           result.owner = serializers.deserialize(value,

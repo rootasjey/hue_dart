@@ -36,6 +36,12 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
         ..add(serializers.serialize(object.name,
             specifiedType: const FullType(String)));
     }
+    if (object.capabilities != null) {
+      result
+        ..add('capabilities')
+        ..add(serializers.serialize(object.capabilities,
+            specifiedType: const FullType(SensorCapabilities)));
+    }
     if (object.modelId != null) {
       result
         ..add('modelid')
@@ -122,6 +128,11 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'capabilities':
+          result.capabilities = serializers.deserialize(value,
+                  specifiedType: const FullType(SensorCapabilities))
+              as SensorCapabilities;
+          break;
         case 'modelid':
           result.modelId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -177,6 +188,8 @@ class _$Sensor extends Sensor {
   @override
   final String name;
   @override
+  final SensorCapabilities capabilities;
+  @override
   final String modelId;
   @override
   final String uniqueId;
@@ -204,6 +217,7 @@ class _$Sensor extends Sensor {
       {this.id,
       this.type,
       this.name,
+      this.capabilities,
       this.modelId,
       this.uniqueId,
       this.manufacturerName,
@@ -230,6 +244,7 @@ class _$Sensor extends Sensor {
         id == other.id &&
         type == other.type &&
         name == other.name &&
+        capabilities == other.capabilities &&
         modelId == other.modelId &&
         uniqueId == other.uniqueId &&
         manufacturerName == other.manufacturerName &&
@@ -255,9 +270,11 @@ class _$Sensor extends Sensor {
                                     $jc(
                                         $jc(
                                             $jc(
-                                                $jc($jc(0, id.hashCode),
-                                                    type.hashCode),
-                                                name.hashCode),
+                                                $jc(
+                                                    $jc($jc(0, id.hashCode),
+                                                        type.hashCode),
+                                                    name.hashCode),
+                                                capabilities.hashCode),
                                             modelId.hashCode),
                                         uniqueId.hashCode),
                                     manufacturerName.hashCode),
@@ -276,6 +293,7 @@ class _$Sensor extends Sensor {
           ..add('id', id)
           ..add('type', type)
           ..add('name', name)
+          ..add('capabilities', capabilities)
           ..add('modelId', modelId)
           ..add('uniqueId', uniqueId)
           ..add('manufacturerName', manufacturerName)
@@ -304,6 +322,11 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
+
+  SensorCapabilities _capabilities;
+  SensorCapabilities get capabilities => _$this._capabilities;
+  set capabilities(SensorCapabilities capabilities) =>
+      _$this._capabilities = capabilities;
 
   String _modelId;
   String get modelId => _$this._modelId;
@@ -354,6 +377,7 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
       _id = _$v.id;
       _type = _$v.type;
       _name = _$v.name;
+      _capabilities = _$v.capabilities;
       _modelId = _$v.modelId;
       _uniqueId = _$v.uniqueId;
       _manufacturerName = _$v.manufacturerName;
@@ -391,6 +415,7 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
               id: id,
               type: type,
               name: name,
+              capabilities: capabilities,
               modelId: modelId,
               uniqueId: uniqueId,
               manufacturerName: manufacturerName,

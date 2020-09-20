@@ -120,13 +120,13 @@ class _$GroupSerializer implements StructuredSerializer<Group> {
           result.lightIds.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'groupLights':
           result.groupLights.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Light)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'recycle':
           result.recycle = serializers.deserialize(value,

@@ -111,7 +111,7 @@ class _$HueColorSerializer implements StructuredSerializer<HueColor> {
           result.xy.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(num)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'red':
           result.red = serializers.deserialize(value,

@@ -279,7 +279,7 @@ class _$ConfigurationSerializer implements StructuredSerializer<Configuration> {
               specifiedType: const FullType(BuiltMap, const [
                 const FullType(String),
                 const FullType(WhiteListItem)
-              ])) as BuiltMap<dynamic, dynamic>);
+              ])));
           break;
         case 'apiversion':
           result.apiVersion = serializers.deserialize(value,
@@ -392,52 +392,40 @@ class _$ConfigurationSerializer implements StructuredSerializer<Configuration> {
           break;
         case 'lights':
           result.lights.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(Light)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Light)])));
           break;
         case 'groups':
           result.groups.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(Group)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Group)])));
           break;
         case 'scenes':
           result.scenes.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(Scene)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Scene)])));
           break;
         case 'schedules':
           result.schedules.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(Schedule)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Schedule)])));
           break;
         case 'sensors':
           result.sensors.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(Sensor)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Sensor)])));
           break;
         case 'rules':
           result.rules.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(Rule)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Rule)])));
           break;
         case 'resourcelinks':
           result.resourceLinks.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltMap, const [
                 const FullType(String),
                 const FullType(ResourceLink)
-              ])) as BuiltMap<dynamic, dynamic>);
+              ])));
           break;
       }
     }

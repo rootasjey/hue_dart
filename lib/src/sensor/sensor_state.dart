@@ -20,7 +20,7 @@ abstract class SensorState implements Built<SensorState, SensorStateBuilder> {
   int get buttonEvent;
 
   @nullable
-  String get daylight;
+  bool get daylight;
 
   static Serializer<SensorState> get serializer => _$sensorStateSerializer;
 

@@ -46,7 +46,7 @@ class _$SensorStateSerializer implements StructuredSerializer<SensorState> {
       result
         ..add('daylight')
         ..add(serializers.serialize(object.daylight,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -80,7 +80,7 @@ class _$SensorStateSerializer implements StructuredSerializer<SensorState> {
           break;
         case 'daylight':
           result.daylight = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(bool)) as bool;
           break;
       }
     }
@@ -99,7 +99,7 @@ class _$SensorState extends SensorState {
   @override
   final int buttonEvent;
   @override
-  final String daylight;
+  final bool daylight;
 
   factory _$SensorState([void Function(SensorStateBuilder) updates]) =>
       (new SensorStateBuilder()..update(updates)).build();
@@ -171,9 +171,9 @@ class SensorStateBuilder implements Builder<SensorState, SensorStateBuilder> {
   int get buttonEvent => _$this._buttonEvent;
   set buttonEvent(int buttonEvent) => _$this._buttonEvent = buttonEvent;
 
-  String _daylight;
-  String get daylight => _$this._daylight;
-  set daylight(String daylight) => _$this._daylight = daylight;
+  bool _daylight;
+  bool get daylight => _$this._daylight;
+  set daylight(bool daylight) => _$this._daylight = daylight;
 
   SensorStateBuilder();
 

@@ -119,7 +119,7 @@ class _$LightStateSerializer implements StructuredSerializer<LightState> {
           result.xy.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(num)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'ct':
           result.ct = serializers.deserialize(value,

@@ -61,10 +61,8 @@ class _$RuleActionSerializer implements StructuredSerializer<RuleAction> {
           break;
         case 'body':
           result.body.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(String)
-              ])) as BuiltMap<dynamic, dynamic>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(String)])));
           break;
       }
     }

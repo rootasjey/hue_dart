@@ -126,13 +126,13 @@ class _$RuleSerializer implements StructuredSerializer<Rule> {
           result.conditions.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(Condition)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'actions':
           result.actions.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(RuleAction)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'recycle':
           result.recycle = serializers.deserialize(value,

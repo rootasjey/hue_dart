@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:hue_dart/src/core/bridge_object.dart';
 import 'package:hue_dart/src/core/serializers.dart';
+import 'package:hue_dart/src/sensor/sensor_capabilities.dart';
 import 'package:hue_dart/src/sensor/sensor_config.dart';
 import 'package:hue_dart/src/sensor/sensor_model.dart';
 import 'package:hue_dart/src/sensor/sensor_state.dart';
@@ -21,6 +22,10 @@ abstract class Sensor
   ///The human readable name of the sensor, can be changed by the user
   @nullable
   String get name;
+
+  ///Sensor's capabilities.
+  @nullable
+  SensorCapabilities get capabilities;
 
   ///This parameter uniquely identifies the hardware model of the device for the given manufaturer.
   @BuiltValueField(wireName: 'modelid')
@@ -87,7 +92,7 @@ abstract class Sensor
         'name': name,
       };
     } else if ('config' == action) {
-      return config.toBridgeObject();
+      return config.toUpdateObject();
     } else if ('state' == action) {
       return serializers.serializeWith(serializer, state);
     }
