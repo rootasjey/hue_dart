@@ -25,6 +25,7 @@ import 'package:hue_dart/src/scene/scene.dart';
 import 'package:hue_dart/src/schedule/command.dart';
 import 'package:hue_dart/src/schedule/schedule.dart';
 import 'package:hue_dart/src/sensor/sensor.dart';
+import 'package:hue_dart/src/sensor/sensor_capabilities.dart';
 import 'package:hue_dart/src/sensor/sensor_config.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:hue_dart/src/sensor/sensor_state.dart';

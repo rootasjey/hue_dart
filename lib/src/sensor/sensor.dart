@@ -23,10 +23,6 @@ abstract class Sensor
   @nullable
   String get name;
 
-  ///Sensor's capabilities.
-  @nullable
-  SensorCapabilities get capabilities;
-
   ///This parameter uniquely identifies the hardware model of the device for the given manufaturer.
   @BuiltValueField(wireName: 'modelid')
   @nullable
@@ -68,6 +64,10 @@ abstract class Sensor
 
   @nullable
   SensorConfig get config;
+
+  ///Sensor's capabilities.
+  @nullable
+  SensorCapabilities get capabilities;
 
   static Serializer<Sensor> get serializer => _$sensorSerializer;
 

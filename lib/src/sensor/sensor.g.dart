@@ -36,12 +36,6 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
         ..add(serializers.serialize(object.name,
             specifiedType: const FullType(String)));
     }
-    if (object.capabilities != null) {
-      result
-        ..add('capabilities')
-        ..add(serializers.serialize(object.capabilities,
-            specifiedType: const FullType(SensorCapabilities)));
-    }
     if (object.modelId != null) {
       result
         ..add('modelid')
@@ -102,6 +96,12 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
         ..add(serializers.serialize(object.config,
             specifiedType: const FullType(SensorConfig)));
     }
+    if (object.capabilities != null) {
+      result
+        ..add('capabilities')
+        ..add(serializers.serialize(object.capabilities,
+            specifiedType: const FullType(SensorCapabilities)));
+    }
     return result;
   }
 
@@ -127,11 +127,6 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          break;
-        case 'capabilities':
-          result.capabilities = serializers.deserialize(value,
-                  specifiedType: const FullType(SensorCapabilities))
-              as SensorCapabilities;
           break;
         case 'modelid':
           result.modelId = serializers.deserialize(value,
@@ -173,6 +168,11 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
           result.config.replace(serializers.deserialize(value,
               specifiedType: const FullType(SensorConfig)) as SensorConfig);
           break;
+        case 'capabilities':
+          result.capabilities.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(SensorCapabilities))
+              as SensorCapabilities);
+          break;
       }
     }
 
@@ -187,8 +187,6 @@ class _$Sensor extends Sensor {
   final String type;
   @override
   final String name;
-  @override
-  final SensorCapabilities capabilities;
   @override
   final String modelId;
   @override
@@ -209,6 +207,8 @@ class _$Sensor extends Sensor {
   final SensorState state;
   @override
   final SensorConfig config;
+  @override
+  final SensorCapabilities capabilities;
 
   factory _$Sensor([void Function(SensorBuilder) updates]) =>
       (new SensorBuilder()..update(updates)).build();
@@ -217,7 +217,6 @@ class _$Sensor extends Sensor {
       {this.id,
       this.type,
       this.name,
-      this.capabilities,
       this.modelId,
       this.uniqueId,
       this.manufacturerName,
@@ -227,7 +226,8 @@ class _$Sensor extends Sensor {
       this.on,
       this.battery,
       this.state,
-      this.config})
+      this.config,
+      this.capabilities})
       : super._();
 
   @override
@@ -244,7 +244,6 @@ class _$Sensor extends Sensor {
         id == other.id &&
         type == other.type &&
         name == other.name &&
-        capabilities == other.capabilities &&
         modelId == other.modelId &&
         uniqueId == other.uniqueId &&
         manufacturerName == other.manufacturerName &&
@@ -254,7 +253,8 @@ class _$Sensor extends Sensor {
         on == other.on &&
         battery == other.battery &&
         state == other.state &&
-        config == other.config;
+        config == other.config &&
+        capabilities == other.capabilities;
   }
 
   @override
@@ -274,17 +274,17 @@ class _$Sensor extends Sensor {
                                                     $jc($jc(0, id.hashCode),
                                                         type.hashCode),
                                                     name.hashCode),
-                                                capabilities.hashCode),
-                                            modelId.hashCode),
-                                        uniqueId.hashCode),
-                                    manufacturerName.hashCode),
-                                swVersion.hashCode),
-                            recycle.hashCode),
-                        reachable.hashCode),
-                    on.hashCode),
-                battery.hashCode),
-            state.hashCode),
-        config.hashCode));
+                                                modelId.hashCode),
+                                            uniqueId.hashCode),
+                                        manufacturerName.hashCode),
+                                    swVersion.hashCode),
+                                recycle.hashCode),
+                            reachable.hashCode),
+                        on.hashCode),
+                    battery.hashCode),
+                state.hashCode),
+            config.hashCode),
+        capabilities.hashCode));
   }
 
   @override
@@ -293,7 +293,6 @@ class _$Sensor extends Sensor {
           ..add('id', id)
           ..add('type', type)
           ..add('name', name)
-          ..add('capabilities', capabilities)
           ..add('modelId', modelId)
           ..add('uniqueId', uniqueId)
           ..add('manufacturerName', manufacturerName)
@@ -303,7 +302,8 @@ class _$Sensor extends Sensor {
           ..add('on', on)
           ..add('battery', battery)
           ..add('state', state)
-          ..add('config', config))
+          ..add('config', config)
+          ..add('capabilities', capabilities))
         .toString();
   }
 }
@@ -322,11 +322,6 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
-
-  SensorCapabilities _capabilities;
-  SensorCapabilities get capabilities => _$this._capabilities;
-  set capabilities(SensorCapabilities capabilities) =>
-      _$this._capabilities = capabilities;
 
   String _modelId;
   String get modelId => _$this._modelId;
@@ -370,6 +365,12 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
       _$this._config ??= new SensorConfigBuilder();
   set config(SensorConfigBuilder config) => _$this._config = config;
 
+  SensorCapabilitiesBuilder _capabilities;
+  SensorCapabilitiesBuilder get capabilities =>
+      _$this._capabilities ??= new SensorCapabilitiesBuilder();
+  set capabilities(SensorCapabilitiesBuilder capabilities) =>
+      _$this._capabilities = capabilities;
+
   SensorBuilder();
 
   SensorBuilder get _$this {
@@ -377,7 +378,6 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
       _id = _$v.id;
       _type = _$v.type;
       _name = _$v.name;
-      _capabilities = _$v.capabilities;
       _modelId = _$v.modelId;
       _uniqueId = _$v.uniqueId;
       _manufacturerName = _$v.manufacturerName;
@@ -388,6 +388,7 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
       _battery = _$v.battery;
       _state = _$v.state?.toBuilder();
       _config = _$v.config?.toBuilder();
+      _capabilities = _$v.capabilities?.toBuilder();
       _$v = null;
     }
     return this;
@@ -415,7 +416,6 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
               id: id,
               type: type,
               name: name,
-              capabilities: capabilities,
               modelId: modelId,
               uniqueId: uniqueId,
               manufacturerName: manufacturerName,
@@ -425,7 +425,8 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
               on: on,
               battery: battery,
               state: _state?.build(),
-              config: _config?.build());
+              config: _config?.build(),
+              capabilities: _capabilities?.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -433,6 +434,8 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
         _state?.build();
         _$failedField = 'config';
         _config?.build();
+        _$failedField = 'capabilities';
+        _capabilities?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Sensor', _$failedField, e.toString());
