@@ -51,7 +51,7 @@ class ColorHelper {
   /// returns an [HueColor] with the [red], [green], [blue] values ranging from 0 to 1 converted to
   /// hue, saturation and brightness.
   HueColor rgbToHueSaturationBrightness(num red, num green, num blue) {
-    num hue, saturation, brightness;
+    num hue, saturation;
     var min = [red, green, blue].reduce(math.min);
     var max = [red, green, blue].reduce(math.max);
     if (min != max) {
@@ -63,12 +63,10 @@ class ColorHelper {
         hue = (4 + ((red - green) / (max - min))) * 60;
       }
       saturation = (max - min) / max;
-      brightness = max;
     } else {
       // Max == Min
       hue = 0;
       saturation = 0;
-      brightness = max;
     }
 
     while (hue < 0) {
@@ -79,7 +77,7 @@ class ColorHelper {
       (c) => c
         ..hue = (hue / 360 * 65535).round()
         ..saturation = (saturation * 255).round()
-        ..brightness = (brightness * 255).round()
+        ..brightness = ((max + min) / 2).round()
         ..red = red
         ..green = green
         ..blue = blue,
