@@ -98,9 +98,6 @@ abstract class GroupAction
     if (alert != null) {
       body['alert'] = alert;
     }
-    if (colorMode != null) {
-      body['colormode'] = colorMode;
-    }
     return body;
   }
 }
